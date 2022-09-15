@@ -33,30 +33,45 @@ class Form extends Component {
 
         return (
             <form onSubmit={this.onFormSubmit}>
-                <label for="firstName">FirstName</label>
-                <input 
-                    type="text" 
-                    name="firstName" 
-                    id="firstName"
-                    value={firstName} 
-                    onChange={this.handleChange} />
-                <label for="lastName">LastName</label>
-                <input 
-                    type="text" 
-                    name="lastName" 
-                    id="lastName"
-                    value={lastName} 
-                    onChange={this.handleChange} />
-                <label for="email">Email</label>
-                <input 
-                    type="text" 
-                    name="email" 
-                    id="email"
-                    value={email} 
-                    onChange={this.handleChange} />
-                <button type="submit">
-                    Add User
-                </button>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th><label for="firstName">FirstName</label></th>
+                        <th><label for="lastName">LastName</label></th>
+                        <th><label for="email">Email</label></th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <button type="submit">
+                                Add User
+                            </button>
+                        </th>
+                        <th>
+                            <input 
+                                type="text" 
+                                name="firstName" 
+                                id="firstName"
+                                value={firstName} 
+                                onChange={this.handleChange} />
+                        </th>
+                        <th>
+                            <input 
+                                type="text" 
+                                name="lastName" 
+                                id="lastName"
+                                value={lastName} 
+                                onChange={this.handleChange} />
+                        </th>
+                        <th>
+                            <input 
+                                type="text" 
+                                name="email" 
+                                id="email"
+                                value={email} 
+                                onChange={this.handleChange} />
+                        </th>
+                    </tr>
+                </table>
             </form>
         );
     }
