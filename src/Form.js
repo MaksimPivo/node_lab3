@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 
 class Form extends Component {
+
     constructor(props) {
         super(props);
         
         this.initialState = {
+            number: '',
             firstName: '',
             lastName: '',
-            email: ''
+            email: '',
         };
 
         this.state = this.initialState;
+        this.state = {count: '1'};
     }
 
     handleChange = event => {
@@ -22,6 +25,10 @@ class Form extends Component {
     }
 
     onFormSubmit = (event) => {
+
+        this.state.number = this.state.count;
+        this.state.count++;
+
         event.preventDefault();
         
         this.props.handleSubmit(this.state);
@@ -29,7 +36,7 @@ class Form extends Component {
     }
 
     render() {
-        const { firstName, lastName, email } = this.state; 
+        const {number, firstName, lastName, email } = this.state; 
 
         return (
             <form onSubmit={this.onFormSubmit}>
