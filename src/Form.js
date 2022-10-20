@@ -13,7 +13,7 @@ class Form extends Component {
         };
 
         this.state = this.initialState;
-        this.state = {count: '1'};
+        this.state = {count: 1};
     }
 
     handleChange = event => {
@@ -25,9 +25,12 @@ class Form extends Component {
     }
 
     onFormSubmit = (event) => {
-
-        this.state.number = this.state.count;
-        this.state.count++;
+        this.setState((state) => {
+            return {
+                number: state.count,
+                count: state.count + 1
+            }
+          });
 
         event.preventDefault();
         
@@ -36,7 +39,7 @@ class Form extends Component {
     }
 
     render() {
-        const {number, firstName, lastName, email } = this.state; 
+        const {firstName, lastName, email } = this.state; 
 
         return (
             <form onSubmit={this.onFormSubmit}>

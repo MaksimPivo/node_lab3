@@ -25,6 +25,16 @@
  * 2. Prevent iOS and IE text size adjust after device orientation change,
  *    without disabling user zoom.
  */
+
+ #main{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: auto;
+ }
+
  html {
   -ms-text-size-adjust: 100%;
   /* 2 */
