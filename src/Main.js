@@ -1,29 +1,29 @@
-import React from "react";
+import React, { useState} from "react";
 import {Routes, Route} from 'react-router-dom';
-import Tables from './Tables';
 import Login from './Login';
+import ProtectedRoute from "./ProtectedRoute";
 
-class Main extends React.Component {
-    constructor(props){
-        super(props);
-        this.state ={
-            isLoggined: false,
-        }
-    }
+function Main() {
+    const [logins, setLogins] = useState(false);
 
-    render(){
-        return(
-            <main id="main">
-                <Routes>
-                    <Route exact path ='/' element={<Login/>}/>
-                    <Route
-                        path="user"
-                        element={<Tables/>}
-                    />
-                </Routes>
-            </main>
-        )
-    }
-}
+    const handleLogin = e => {
+        // e.preventDefault();
+        setLogins(true);
+    };
+
+    return(
+        <div id="main">
+            <Routes>
+                <Route exact path="/" element ={
+                <Login handleLogin={handleLogin}/>}
+                  />
+                <Route
+                    path="/user"
+                    element={<ProtectedRoute logins={logins}/>}
+                />
+            </Routes>
+        </div>
+        );
+};
 
 export default Main;
