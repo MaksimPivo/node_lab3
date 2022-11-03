@@ -6,13 +6,13 @@ class Form extends Component {
         super(props);
         
         this.initialState = {
-            number: '',
             firstName: '',
             lastName: '',
             email: '',
         };
 
         this.state = this.initialState;
+
         this.state = {count: 1};
     }
 
@@ -25,21 +25,18 @@ class Form extends Component {
     }
 
     onFormSubmit = (event) => {
+        event.preventDefault();    
+        this.props.handleSubmit(this.state); 
+        this.setState(this.initialState);
         this.setState((state) => {
             return {
-                number: state.count,
-                count: state.count + 1
+                count: state.count + 1,
             }
-          });
-
-        event.preventDefault();
-        
-        this.props.handleSubmit(this.state);
-        this.setState(this.initialState);
+          });   
     }
 
     render() {
-        const {firstName, lastName, email } = this.state; 
+        const { firstName, lastName, email } = this.state; 
 
         return (
             <form onSubmit={this.onFormSubmit}>

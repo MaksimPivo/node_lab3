@@ -3,7 +3,7 @@ import Tables from './Tables';
 
 const ProtectedRoute = (props) => {
   if(props.logins){
-    return <Tables/>
+    return <Tables></Tables>
   } else{
     window.location.href = '/'
   };

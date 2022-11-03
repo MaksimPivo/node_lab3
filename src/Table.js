@@ -18,7 +18,7 @@ const TableBody = props => {
     const rows = props.characterData.map((row, index) => {
         return (
             <tr key={index}>
-                <td>{row.number}</td>
+                <td>{row.count}</td>
                 <td>{row.firstName}</td>
                 <td>{row.lastName}</td>
                 <td>{row.email}</td>
