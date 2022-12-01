@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import UsersApi from './Users';
-import "./login.css";
+import "../login.css";
 import { useNavigate } from "react-router-dom";
+import store from "../store/index";
 
 
 const Login = (props) => {
@@ -22,7 +23,7 @@ const Login = (props) => {
     };
 
     return (
-        <div class="login">
+        <div className="login">
             <input 
                 type="text" 
                 name="email" 
@@ -37,7 +38,7 @@ const Login = (props) => {
                 onChange={onChangePassword}/>
             <button id="button" onClick={function(){
                 if(UsersApi.isUsers(email, password)){
-                    props.handleLogin();
+                    store.dispatch({type: "logIn"});
                     navigate("/user");
                 } else {
                     alert("email or password is incorrect");
