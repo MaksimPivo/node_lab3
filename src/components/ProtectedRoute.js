@@ -1,11 +1,13 @@
 import React from 'react';
 import Tables from './Tables';
+import store from '../store';
 
 const ProtectedRoute = (props) => {
-  if(props.logins){
-    return <Tables></Tables>
+  const auth = store.getState().auth;
+  if(auth){
+    return <Tables></Tables>;
   } else{
-    window.location.href = '/'
+    window.location.href = '/';
   };
 }
 

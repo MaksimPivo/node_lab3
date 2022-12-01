@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Table from './Table';
 import Form from './Form';
+import store from '../store/index';
+import { useNavigate } from 'react-router-dom';
 
 class Tables extends Component {
     state = {
@@ -17,6 +19,11 @@ class Tables extends Component {
         });
     }
 
+    logout = () =>{
+        const navigate = useNavigate();
+        navigate("/");
+    }
+
     handleSubmit = character => {
         this.setState({characters: [...this.state.characters, character]});
     }
@@ -27,6 +34,11 @@ class Tables extends Component {
         return (
             <div className="container">
                 <h3>Add new User</h3>
+                <h3><button onClick={function(){
+                    store.dispatch({type: "logOut"})
+                    window.location.href = '/';
+                }}
+                >Logout</button> </h3>
                 <Form handleSubmit={this.handleSubmit} />
                 <h4>Users</h4>
                 <Table
